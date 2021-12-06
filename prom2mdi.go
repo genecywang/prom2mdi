@@ -97,7 +97,7 @@ func mdiJSONPayload(token string, targets string, content string) string {
 func readTmplToString(filename string, data interface{}) (string, error) {
 
 	t := template.Must(
-		template.New(filename).Funcs(sprig.TxtFuncMap()).ParseGlob("*.tmpl"))
+		template.New(filename).Funcs(sprig.TxtFuncMap()).ParseFiles(filename))
 
 	content, err := os.ReadFile(filename)
 	if err != nil {

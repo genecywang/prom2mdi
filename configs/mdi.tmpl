@@ -1,18 +1,19 @@
 {{- if eq .Status "resolved" -}}
 *** Alert Cleared ***
 {{- range .Alerts }}
-AlertName: {{ .Labels.alertname }}
 Summary: {{ .Annotations.summary }}
+AlertName: {{ .Labels.alertname }}
 StartTime: {{ .StartsAt | date_modify "+0h" | date "2006-01-02 15:04:05 -07" }}
 EndTime: {{ .EndsAt | date_modify "+0h" | date "2006-01-02 15:04:05 -07" }}
+
 {{- end }}
 {{- else -}}
 *** Alert Firing ***
 {{- range .Alerts }}
 {{- if eq .Status "firing" }}
-AlertName: {{ .Labels.alertname }}
-NotifType: {{ .Labels.severity | title}}
 Summary: {{ .Annotations.summary }}
+NotifType: {{ .Labels.severity | title}}
+AlertName: {{ .Labels.alertname }}
 Description: {{ .Annotations.description }}
 StartTime: {{ .StartsAt | date_modify "+0h" | date "2006-01-02 15:04:05 -07" }}
 {{ end }}
@@ -25,10 +26,10 @@ StartTime: {{ .StartsAt | date_modify "+0h" | date "2006-01-02 15:04:05 -07" }}
 ----
 
 *** Alert Cleared ***
-AlertName: {{ .Labels.alertname }}
 Summary: {{ .Annotations.summary }}
+AlertName: {{ .Labels.alertname }}
 StartTime: {{ .StartsAt | date_modify "+0h" | date "2006-01-02 15:04:05 -07" }}
 EndTime: {{ .EndsAt | date_modify "+0h" | date "2006-01-02 15:04:05 -07" }}
-{{- end -}}
+{{- end }}
 {{- end -}}
 {{- end -}}

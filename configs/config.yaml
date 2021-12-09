@@ -1,4 +1,4 @@
-# Defaute config template
+# Default config template
 mdi_url: "http://example.com:8080/api/example"
 token: "example"
 targets: "example"

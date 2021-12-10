@@ -19,12 +19,11 @@ StartTime: {{ .StartsAt | date_modify "+0h" | date "2006-01-02 15:04:05 -07" }}
 {{ end }}
 {{- end -}}
 {{- end -}}
-{{/* case 2 */}}
+{{- /* case 2 */}}
 {{- if eq .Status "firing" -}}
 {{- range .Alerts -}}
-{{- if eq .Status "resolved" -}}
-
-----
+{{- if eq .Status "resolved" }}
+--
 *** Alert Cleared ***
 Summary: {{ .Annotations.summary }}
 AlertName: {{ .Labels.alertname }}
